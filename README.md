@@ -4,7 +4,9 @@ Vagrant instance for building myperl and openxpki RPMs with SLES SP3
 
 # Getting Started
 
-* Import the Vagrant box
+To run the scripts, you'll need a special vagrant box that contains
+SLES 11 SP3 and a couple of RPMS and other modifications needed for
+the build process:
 
     vagrant box add --name mrscotty/sles11sp3-oxibuild \
         http://packages.openxpki.org/vagrant/mrscotty-sles11sp3-oxibuild.box
