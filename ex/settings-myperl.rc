@@ -1,0 +1,26 @@
+# Common settings for myperl and openxpki package build
+set -x
+
+function die {
+    echo $* 1>&2
+    exit 1
+}
+
+basedir=$(dirname $0)
+
+
+export MYPERL_VERSION=$(rpm -q --queryformat '%{VERSION}' myperl)
+export MYPERL_RELEASE=$(rpm -q --queryformat '%{RELEASE}' myperl)
+export MYPERL_RPM_VERSION=$(rpm -q --queryformat '%{VERSION}-%{RELEASE}' myperl)
+
+# TODO: support building myperl with this image
+if [ "$MYPERL_VERSION" == "package myperl is not installed" ]; then
+    echo "ERROR: $MYPERL_VERSION" 1>&2
+    exit 1
+fi
+if [ "$MYPERL_RELEASE" == "package myperl is not installed" ]; then
+    echo "ERROR: $MYPERL_RELEASE" 1>&2
+    exit 1
+fi
+
+
