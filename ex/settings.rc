@@ -15,8 +15,8 @@ fi
 : ${MYPERL_GITURL:="https://github.com/mrscotty/myperl.git"}
 : ${MYPERL_BRANCH:=master}
 
-: ${OPENXPKI_GITURL:="https://github.com/mrscotty/openxpki.git"}
-: ${OPENXPKI_BRANCH:=develop}
+: ${OPENXPKI_GITURL:="https://github.com/openxpki/openxpki.git"}
+: ${OPENXPKI_BRANCH:=master}
 
 : ${ORACLE_HOME:=/u01/app/oracle/product/11.2.0/xe}
 
