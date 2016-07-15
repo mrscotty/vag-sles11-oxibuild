@@ -5,28 +5,35 @@
 # instance, as needed.
 #
 
-.PHONY: all myperl ora oxi rm-myperl
+.PHONY: all init myperl ora oxi rm-myperl rm-oxi inst-myperl
 
 all: oxi
 
-myperl:
+init:
 	ex/vag-init.sh
+
+myperl: init
 	vagrant ssh --command /vagrant/ex/build-myperl.sh
 
-ora:
-	ex/vag-init.sh
+ora: init
 	vagrant ssh --command /vagrant/ex/build-dbd-ora.sh
 
-oxi:
-	ex/vag-init.sh
+oxi: init
 	vagrant ssh --command /vagrant/ex/build-oxi.sh
 
-rm-myperl:
-	ex/vag-init.sh
+############################################################
+# Remove currently-installed packages (e.g. to rebuild them)
+############################################################
+rm-myperl: init
 	vagrant ssh --command /vagrant/ex/remove-myperl.sh
 
-rm-oxi:
-	ex/vag-init.sh
+rm-oxi: init
 	vagrant ssh --command /vagrant/ex/remove-oxi.sh
 
+############################################################
+# Install previously-built packages (e.g. to build just oxi)
+############################################################
+
+inst-myperl: init
+	vagrant ssh --command /vagrant/ex/install-myperl.sh
 

@@ -8,8 +8,14 @@ To run the scripts, you'll need a special vagrant box that contains
 SLES 11 SP3 and a couple of RPMS and other modifications needed for
 the build process:
 
-    vagrant box add --name mrscotty/sles11sp3-oxibuild \
+    vagrant box add mrscotty/sles11sp3-oxibuild \
         http://packages.openxpki.org/vagrant/mrscotty-sles11sp3-oxibuild.box
+
+If you want to edit the Vagrantfile before starting (e.g. to add a shared
+folder for your local code repo), run the following:
+
+    vagrant init mrscotty/sles11sp3-oxibuild
+
 
 # Local Customization
 
