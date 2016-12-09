@@ -7,7 +7,11 @@
 
 .PHONY: all init myperl ora oxi rm-myperl rm-oxi inst-myperl
 
-all: oxi
+all: myperl ora oxi
+
+logall:
+	rm -f screenlog.0
+	screen -L time $(MAKE) all
 
 init:
 	ex/vag-init.sh
@@ -37,3 +41,10 @@ rm-oxi: init
 inst-myperl: init
 	vagrant ssh --command /vagrant/ex/install-myperl.sh
 
+mirror:
+	minicpan -C stratopan.rc
+
+rsync:
+	rsync -av --rsh=ssh --delete --exclude '.*' \
+		rpms/ \
+		rackport:/webtree/htdocs/dom-kunden/openxpki.org/packages/suse/latest/

@@ -23,7 +23,7 @@ test -d /vagrant/rpms || mkdir -p /vagrant/rpms
 # Note: the 'git pull' uses fast-forward only to abort if there are local
 # modifications. 
 test -d ~/git/openxpki || git clone $OPENXPKI_GITURL ~/git/openxpki
-(cd ~/git/openxpki && git checkout $OPENXPKI_BRANCH && git pull --ff-only)
+(cd ~/git/openxpki && git remote update && git checkout $OPENXPKI_BRANCH && git pull --ff-only)
 
 
 OXI_VERSION=$(cd ~/git/openxpki && perl tools/vergen --format version)

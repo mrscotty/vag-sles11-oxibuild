@@ -10,17 +10,34 @@ basedir=$(dirname $0)
 
 if [ -f $basedir/../local.rc ]; then
     . $basedir/../local.rc
+else
+    echo "DEBUG: No local.rc file"
 fi
 
-: ${MYPERL_GITURL:="https://github.com/mrscotty/myperl.git"}
-: ${MYPERL_BRANCH:=master}
+# Supress perl locale warnings...
+export LC_ALL=C
 
-: ${OPENXPKI_GITURL:="https://github.com/openxpki/openxpki.git"}
-: ${OPENXPKI_BRANCH:=master}
+if [ -z "$MYPERL_GITURL" ]; then
+export MYPERL_GITURL="https://github.com/mrscotty/myperl.git"
+fi
 
-: ${ORACLE_HOME:=/u01/app/oracle/product/11.2.0/xe}
+if [ -z "$MYPERL_BRANCH" ]; then
+export MYPERL_BRANCH=master
+fi
 
-export PERL_VERSION=5.22.0
+if [ -z "$OPENXPKI_GITURL" ]; then
+export OPENXPKI_GITURL="https://github.com/openxpki/openxpki.git"
+fi
+
+if [ -z "$OPENXPKI_BRANCH" ]; then
+export OPENXPKI_BRANCH=develop
+fi
+
+if [ -z "$ORACLE_HOME" ]; then
+export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
+fi
+
+export PERL_VERSION=5.24.0
 
 export OPENSSL_PREFIX=/opt/myperl/ssl
 export OPENSSL_INCLUDE=$OPENSSL_PREFIX/include
@@ -32,5 +49,10 @@ if $OPENSSL_PREFIX/bin/openssl version -f | grep -q fPIC ; then
 else
     echo "ERROR: OpenSSL NOT built with -fPIC" 1>&2
     exit 1
+fi
+
+if [ -d mirrors/stratopan ]; then
+: ${CPANM_MIRROR:="--mirror file:///vagrant/mirrors/stratopan --mirror-only"}
+export CPANM_MIRROR
 fi
 

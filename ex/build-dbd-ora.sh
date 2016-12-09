@@ -43,8 +43,11 @@ if ! rpm -q myperl-dbd-oracle >/dev/null; then
     (cd ~/git/myperl/package/suse/myperl-dbd-oracle && \
         PERL_MM_OPT='INC="$OPENSSL_INC"'; PERL5LIB=$HOME/perl5/lib/perl5/ make)
     test $? == 0 || die "ERROR building myperl-dbd-oracle"
-    sudo rpm -ivh \
+    sudo rpm -iv \
         ~/rpmbuild/RPMS/x86_64/myperl-dbd-oracle-$MYPERL_RPM_VERSION.x86_64.rpm
+    cp -av \
+        ~/rpmbuild/RPMS/x86_64/myperl-dbd-oracle-$MYPERL_RPM_VERSION.x86_64.rpm \
+        /vagrant/rpms
 else
     echo "WARN myperl-dbd-oracle already installed"
 fi

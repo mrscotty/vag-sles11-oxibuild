@@ -41,7 +41,7 @@ fi
 #
 if ! rpm -q myperl >/dev/null 2>&1; then
     (cd ~/git/myperl && make fetch-perl suse)
-    sudo rpm -ivh --oldpackage --replacepkgs \
+    sudo rpm -iv --oldpackage --replacepkgs \
         ~/rpmbuild/RPMS/x86_64/myperl-$MYPERL_VERSION.x86_64.rpm
     cp -av \
         $rpmsdir/myperl-$MYPERL_VERSION.x86_64.rpm \
@@ -54,7 +54,7 @@ fi
 if ! rpm -q myperl-buildtools >/dev/null 2>&1; then
     (cd ~/git/myperl/package/suse/myperl-buildtools && \
     PERL5LIB=$HOME/perl5/lib/perl5 make PERL_VERSION=$PERL_VERSION)
-    sudo rpm -ivh --oldpackage --replacepkgs \
+    sudo rpm -iv --oldpackage --replacepkgs \
         ~/rpmbuild/RPMS/x86_64/myperl-buildtools-$MYPERL_VERSION.x86_64.rpm
     cp -av \
         $rpmsdir/myperl-buildtools-$MYPERL_VERSION.x86_64.rpm \
@@ -68,7 +68,7 @@ if ! rpm -q myperl-dbi >/dev/null 2>&1; then
     (cd ~/git/myperl/package/suse/myperl-dbi && \
         PERL5LIB=$HOME/perl5/lib/perl5/ make)
     test $? == 0 || die "Error building myperl-dbi"
-    sudo rpm -ivh ~/rpmbuild/RPMS/x86_64/myperl-dbi-$MYPERL_VERSION.x86_64.rpm
+    sudo rpm -iv ~/rpmbuild/RPMS/x86_64/myperl-dbi-$MYPERL_VERSION.x86_64.rpm
     cp -av \
         $rpmsdir/myperl-dbi-$MYPERL_VERSION.x86_64.rpm \
         /vagrant/rpms
@@ -81,7 +81,7 @@ if ! rpm -q myperl-fcgi >/dev/null 2>&1; then
     (cd ~/git/myperl/package/suse/myperl-fcgi && \
         PERL5LIB=$HOME/perl5/lib/perl5/ make)
     test $? == 0 || die "Error building myperl-fcgi"
-    sudo rpm -ivh ~/rpmbuild/RPMS/x86_64/myperl-fcgi-$MYPERL_VERSION.x86_64.rpm
+    sudo rpm -iv ~/rpmbuild/RPMS/x86_64/myperl-fcgi-$MYPERL_VERSION.x86_64.rpm
     cp -av \
         $rpmsdir/myperl-fcgi-$MYPERL_VERSION.x86_64.rpm \
         /vagrant/rpms
@@ -94,7 +94,7 @@ if ! rpm -q myperl-dbd-mysql >/dev/null 2>&1; then
     (cd ~/git/myperl/package/suse/myperl-dbd-mysql && \
         PERL5LIB=$HOME/perl5/lib/perl5/ make)
     test $? == 0 || die "Error building myperl-dbd-mysql"
-    sudo rpm -ivh ~/rpmbuild/RPMS/x86_64/myperl-dbd-mysql-$MYPERL_VERSION.x86_64.rpm
+    sudo rpm -iv ~/rpmbuild/RPMS/x86_64/myperl-dbd-mysql-$MYPERL_VERSION.x86_64.rpm
     cp -av \
         $rpmsdir/myperl-dbd-mysql-$MYPERL_VERSION.x86_64.rpm \
         /vagrant/rpms
