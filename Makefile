@@ -9,6 +9,8 @@
 
 all: myperl ora oxi
 
+-include Makefile.local
+
 logall:
 	rm -f screenlog.0
 	screen -L time $(MAKE) all
@@ -47,7 +49,3 @@ inst-myperl: init
 mirror:
 	minicpan -C stratopan.rc
 
-rsync:
-	rsync -av --rsh=ssh --delete --exclude '.*' \
-		rpms/ \
-		rackport:/webtree/htdocs/dom-kunden/openxpki.org/packages/suse/latest/

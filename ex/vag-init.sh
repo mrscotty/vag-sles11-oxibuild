@@ -4,7 +4,7 @@
 set -e
 set -x
 
-vag_box=mrscotty/sles11sp3-oxibuild
+vag_box=mrscotty/sles11-oxibuild
 vag_provider=virtualbox
 
 if [ ! -f Vagrantfile ]; then
