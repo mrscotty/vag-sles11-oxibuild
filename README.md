@@ -5,17 +5,23 @@ Vagrant instance for building myperl and openxpki RPMs with SLES SP3
 # Getting Started
 
 To run the scripts, you'll need a special vagrant box that contains
-SLES 11 SP3 and a couple of RPMS and other modifications needed for
-the build process:
+SLES 11 and a couple of RPMS and other modifications needed for
+the build process.
+
+To fetch the latest box from HashiCorp, run:
+
+    vagrant box add mrscotty/sles11-oxibuild
+
+To fetch a specific box from packages.openxpki.org:
 
     vagrant box add mrscotty/sles11sp4-oxibuild \
-        http://packages.openxpki.org/vagrant/mrscotty-sles11sp4-oxibuild.box
+        http://packages.openxpki.org/vagrant/mrscotty-sles11-oxibuild.box
 
+Running the 'make <target>' will initialize the Vagrant instance for you. 
 If you want to edit the Vagrantfile before starting (e.g. to add a shared
 folder for your local code repo), run the following:
 
-    vagrant init mrscotty/sles11sp4-oxibuild
-
+    vagrant init mrscotty/sles11-oxibuild
 
 # Local Customization
 
@@ -64,6 +70,13 @@ instance must be uninstalled. This can be done with the following commands:
 
     make rm-oxi
     make rm-myperl
+
+# Re-cloning the Git repository
+
+To remove the ~/git/openxpki working repository from the guest can be done
+with the following (running 'make oxi' will download the latest clone):
+
+    make rm-oxi-git
 
 # CPAN Mirror
 
