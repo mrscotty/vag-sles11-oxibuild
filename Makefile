@@ -34,6 +34,9 @@ rm-myperl: init
 rm-oxi: init
 	vagrant ssh --command /vagrant/ex/remove-oxi.sh
 
+rm-oxi-git: init
+	vagrant ssh --command "rm -rf git/openxpki"
+
 ############################################################
 # Install previously-built packages (e.g. to build just oxi)
 ############################################################
