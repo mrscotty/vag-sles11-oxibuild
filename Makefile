@@ -12,8 +12,7 @@ all: myperl ora oxi
 -include Makefile.local
 
 logall:
-	rm -f screenlog.0
-	screen -L time $(MAKE) all
+	script build.log time $(MAKE) all
 
 init:
 	ex/vag-init.sh

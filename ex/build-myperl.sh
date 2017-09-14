@@ -24,11 +24,18 @@ test -d /vagrant/rpms || mkdir -p /vagrant/rpms
 test -d ~/git/myperl || git clone $MYPERL_GITURL ~/git/myperl
 (cd ~/git/myperl && git checkout $MYPERL_BRANCH && git pull --ff-only)
 
+export PERL_VERSION=$(cd ~/git/myperl && make perl-ver-string)
+if [ -z "$PERL_VERSION" ]; then
+    echo "ERROR - failed to detect perl version" 1>&2
+    exit 1
+fi
+
 export MYPERL_VERSION=$(cd ~/git/myperl && make suse-ver-string)
 if [ -z "$MYPERL_VERSION" ]; then
     echo "ERROR - failed to detect myperl version" 1>&2
     exit 1
 fi
+
 export MYPERL_RELEASE=$(cd ~/git/myperl && make myperl-release)
 if [ -z "$MYPERL_RELEASE" ]; then
     echo "ERROR - failed to detect myperl release" 1>&2

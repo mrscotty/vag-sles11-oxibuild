@@ -15,7 +15,7 @@ if [ ! -f .vagrant/machines/default/$vag_provider/id ]; then
     vagrant up
 fi
 
-if vagrant status default | egrep -q 'poweroff|aborted'; then
+if vagrant status default | egrep -q 'poweroff|aborted|not created'; then
     vagrant up
 fi
 

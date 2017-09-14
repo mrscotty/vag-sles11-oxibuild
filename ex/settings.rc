@@ -37,8 +37,6 @@ if [ -z "$ORACLE_HOME" ]; then
 export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
 fi
 
-export PERL_VERSION=5.24.0
-
 export OPENSSL_PREFIX=/opt/myperl/ssl
 export OPENSSL_INCLUDE=$OPENSSL_PREFIX/include
 export OPENSSL_INC=$OPENSSL_PREFIX/include
