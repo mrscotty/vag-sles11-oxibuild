@@ -43,8 +43,30 @@ the repository. As an example:
     export PACKAGER
 
     # Specify CPAN mirror
-    export CPANM_MIRROR=/vagrant/cpan
+    export CPANM_MIRROR="--mirror /vagrant/cpan --mirror-only"
     
+# Using Pinto
+
+For information on Pinto, see [https://perlmaven.com/pinto-tutorial]. 
+
+## Installing Pinto
+
+    curl -L http://getpinto.stratopan.com | bash
+    source ~/opt/local/pinto/etc/bashrc
+
+## Initialize Pinto
+
+This will initialize the pinto repository and populate it with the 
+prerequisites.
+
+    ex/setup-pinto.sh
+
+## Using Pinto
+
+In the local.rc file, add the following line:
+
+    export CPANM_MIRROR="--mirror /vagrant/pinto --mirror-only"
+
 # Building RPMS
 
 ## myperl
