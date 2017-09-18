@@ -22,6 +22,10 @@ if ! rpm -q oracle-xe > /dev/null; then
     sudo rpm $basedir/oracle-xe-11.2.0-1.0.x86_64.rpm
 fi
 
+if [ -z "$PERL_VERSION" ]; then
+    export PERL_VERSION=$(cd ~/git/myperl && make perl-ver-string)
+fi
+
 if [ -z "$ORACLE_HOME" ]; then
     echo "ERROR: ORACLE_HOME not set" 1>&2
     exit 1
