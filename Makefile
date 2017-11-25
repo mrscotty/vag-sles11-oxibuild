@@ -5,9 +5,9 @@
 # instance, as needed.
 #
 
-.PHONY: all init myperl ora oxi rm-myperl rm-oxi inst-myperl
+.PHONY: all init myperl ora oxi rm-myperl rm-oxi inst-myperl custom-deps
 
-all: myperl ora oxi
+all: myperl ora oxi custom-deps
 
 -include Makefile.local
 
@@ -25,6 +25,10 @@ ora: init
 
 oxi: init
 	vagrant ssh --command /vagrant/ex/build-oxi.sh
+
+custom-deps: init
+	vagrant ssh --command /vagrant/ex/build-custom-deps.sh
+
 
 ############################################################
 # Remove currently-installed packages (e.g. to rebuild them)
