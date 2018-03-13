@@ -33,6 +33,9 @@ if [ -z "$OPENXPKI_BRANCH" ]; then
 export OPENXPKI_BRANCH=develop
 fi
 
+: ${OPENCATOOLS_GITURL:=https://github.com/openxpki/openca-tools-forked.git}
+: ${OPENCATOOLS_BRANCH:=develop}
+
 if [ -z "$ORACLE_HOME" ]; then
 export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
 fi
