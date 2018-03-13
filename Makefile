@@ -15,7 +15,7 @@ logall:
 	script build.log time $(MAKE) all
 
 init:
-	ex/vag-init.sh
+	ex/vag-init.sh $(VAG_BOXNAME)
 
 myperl: init
 	vagrant ssh --command /vagrant/ex/build-myperl.sh
@@ -28,6 +28,10 @@ oxi: init
 
 custom-deps: init
 	vagrant ssh --command /vagrant/ex/build-custom-deps.sh
+
+build-%: init
+	@if [ ! -x ex/$@.sh ]; then echo "ERROR: no build target $@" && exit 1; fi
+	vagrant ssh --command /vagrant/ex/$@.sh
 
 
 ############################################################
